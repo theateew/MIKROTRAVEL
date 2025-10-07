@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MikroTravel Central Java</title>
+    <link rel="icon" type="image/x-icon" href="/images/icon.ico">
+  <link rel="stylesheet" href="style.css" />
+
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">MikroTravel</div>
+    <ul>
+      <li><a href="#beranda">Beranda</a></li>
+      <li><a href="#destinasi">Destinasi</a></li>
+      <li><a href="#tentang">Tentang</a></li>
+      <li><a href="contact.html">Kontak</a></li>
+    </ul>
+    <div class="menu-toggle">☰</div>
+  </nav>
+
+  <!-- Landing Page -->
+  <section class="landing" id="beranda">
+    <div class="overlay"></div>
+    <div class="content hero-content">
+      <h1>MikroTravel Central Java</h1>
+      <p>Temukan keindahan wisata Jawa Tengah yang menakjubkan untuk pelajar lokal.</p>
+      <a href="#destinasi" class="btn">Jelajahi Sekarang</a>
+    </div>
+  </section>
+
+  <!-- Destinasi (sama dengan isi destination.html) -->
+  <section class="destinasi" id="destinasi">
+    <h2 class="animate-fade">Destinasi Wisata Populer</h2>
+    <div class="cards">
+      <div class="card animate-fade">
+        <img src="images/borobudur.JPG" alt="Candi Borobudur">
+        <h3>Borobudur</h3>
+        <p>Candi Budha terbesar di dunia yang menjadi ikon pariwisata Jawa Tengah dan warisan dunia UNESCO.</p>
+      </div>
+      <div class="card animate-fade">
+        <img src="images/lawangsewu.JPG" alt="Lawang Sewu">
+        <h3>Lawang Sewu</h3>
+        <p>Bangunan bersejarah di Semarang dengan arsitektur megah dan cerita masa kolonial Belanda.</p>
+      </div>
+      <div class="card animate-fade">
+        <img src="images/dieng.JPG" alt="Dieng Plateau">
+        <h3>Dieng Plateau</h3>
+        <p>Negeri di atas awan dengan pemandangan alam indah, kawah berwarna, dan budaya unik anak gimbal.</p>
+      </div>
+      <div class="card animate-fade">
+        <img src="images/jatijajar.JPG" alt="Goa Jatijajar">
+        <h3>Goa Jatijajar</h3>
+        <p>Objek wisata alam berupa goa kapur alami di Kebumen yang penuh legenda dan keindahan alam.</p>
+      </div>
+      <div class="card animate-fade">
+        <img src="images/karimun.JPG" alt="Karimunjawa">
+        <h3>Karimunjawa</h3>
+        <p>Kepulauan tropis yang memukau dengan pantai jernih dan terumbu karang menawan di Laut Jawa.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tentang (sama dengan isi about.html) -->
+  <section class="tentang" id="tentang">
+    <h2 class="animate-fade">Tentang MikroTravel</h2>
+    <p class="animate-fade">
+      MikroTravel Central Java adalah website travel sederhana yang bertujuan mengenalkan keindahan wisata di Jawa Tengah untuk pelajar lokal. Dirancang dengan gaya modern, ringan, dan informatif.
+    </p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <h3>MikroTravel Central Java</h3>
+    <p>© 2025 MikroTravel. Semua hak cipta dilindungi.</p>
+  </footer>
+
+  <!-- Tombol Scroll to Top -->
+  <button id="scrollTopBtn" title="Kembali ke atas">↑</button>
+
+  <script src="script.js"></script>
+
+  <!-- Scroll Halus -->
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

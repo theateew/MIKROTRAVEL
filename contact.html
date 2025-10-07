@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kontak Kami | MikroTravel Central Java</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <h1>MikroTravel</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="destination.html">Destinasi</a></li>
+        <li><a href="about.html">Tentang</a></li>
+        <li><a href="contact.html" class="active">Kontak</a></li>
+      </ul>
+    </nav>
+    <div class="menu-toggle">☰</div>
+  </header>
+
+  <!-- Section Kontak -->
+  <section class="contact animate-fade">
+    <div class="container">
+      <h2>Hubungi Kami</h2>
+      <p>Kami senang mendengar dari Anda! Isi formulir di bawah untuk mengirim pesan 😊</p>
+
+      <form id="contactForm" class="contact-form">
+        <input type="text" id="name" placeholder="Nama Lengkap" required />
+        <input type="email" id="email" placeholder="Alamat Email" required />
+        <textarea id="message" rows="5" placeholder="Tulis pesan Anda..." required></textarea>
+        <button type="submit" class="btn">Kirim Pesan</button>
+        <p id="form-status" class="status-message"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 MikroTravel Central Java | All Rights Reserved</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
