@@ -1,99 +1,382 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MikroTravel Central Java</title>
-    <link rel="icon" type="image/x-icon" href="/images/icon.ico">
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Home - MIKROTRAVEL</title>
+  <meta name="description" content="Website travel dan pariwisata Pulau Jawa">
+  <meta name="keywords" content="travel, jawa, wisata">
 
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
 </head>
-<body>
 
-  <!-- Navbar -->
-  <nav class="navbar">
-    <div class="logo">MikroTravel</div>
-    <ul>
-      <li><a href="#beranda">Beranda</a></li>
-      <li><a href="#destinasi">Destinasi</a></li>
-      <li><a href="#tentang">Tentang</a></li>
-      <li><a href="contact.html">Kontak</a></li>
-    </ul>
-    <div class="menu-toggle">☰</div>
-  </nav>
+<body class="index-page">
 
-  <!-- Landing Page -->
-  <section class="landing" id="beranda">
-    <div class="overlay"></div>
-    <div class="content hero-content">
-      <h1>MikroTravel Central Java</h1>
-      <p>Temukan keindahan wisata Jawa Tengah yang menakjubkan untuk pelajar lokal.</p>
-      <a href="#destinasi" class="btn">Jelajahi Sekarang</a>
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <img src="assets/img/icon.png" alt="">
+        <h1 class="sitename">MIKROTRAVEL</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="destinasi.html">Destinasi</a></li>
+          <li><a href="paket.html">Paket Wisata</a></li>
+          <li><a href="tentang.html">Tentang Kami</a></li>
+          <li><a href="blog.html">Blog/Tips</a></li>
+          <li><a href="kontak.html">Kontak</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <a class="btn-getstarted" href="paket.html">Pesan Sekarang</a>
+
     </div>
-  </section>
+  </header>
 
-  <!-- Destinasi (sama dengan isi destination.html) -->
-  <section class="destinasi" id="destinasi">
-    <h2 class="animate-fade">Destinasi Wisata Populer</h2>
-    <div class="cards">
-      <div class="card animate-fade">
-        <img src="images/borobudur.JPG" alt="Candi Borobudur">
-        <h3>Borobudur</h3>
-        <p>Candi Budha terbesar di dunia yang menjadi ikon pariwisata Jawa Tengah dan warisan dunia UNESCO.</p>
+  <main class="main">
+
+    <!-- Travel Hero Section -->
+    <section id="travel-hero" class="travel-hero section dark-background">
+
+      <div class="container">
+
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <div class="content">
+              <h1>Jelajahi Keindahan Pulau Jawa</h1>
+              <p class="lead">Temukan destinasi wisata menakjubkan di 6 provinsi Pulau Jawa dengan paket wisata terbaik untuk pengalaman tak terlupakan.</p>
+              <div class="d-flex flex-wrap gap-3 mt-4">
+                <a href="destinasi.html" class="btn btn-primary">Jelajahi Destinasi</a>
+                <a href="paket.html" class="btn btn-primary">Lihat Paket</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 mt-5 mt-lg-0">
+            <div class="booking-form">
+              <form action="" method="post">
+                <div class="row gy-3">
+                  <div class="col-md-12">
+                    <label for="destination">Provinsi Tujuan</label>
+                    <select name="destination" id="destination" class="form-control" required="">
+                      <option value="">Pilih Provinsi</option>
+                      <option value="banten">Banten</option>
+                      <option value="jakarta">DKI Jakarta</option>
+                      <option value="jabar">Jawa Barat</option>
+                      <option value="jateng">Jawa Tengah</option>
+                      <option value="yogya">DI Yogyakarta</option>
+                      <option value="jatim">Jawa Timur</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="check-in">Tanggal Berangkat</label>
+                    <input type="date" name="checkin" id="check-in" class="form-control" required="">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="check-out">Tanggal Pulang</label>
+                    <input type="date" name="checkout" id="check-out" class="form-control" required="">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="adults">Dewasa</label>
+                    <input type="number" name="adults" id="adults" class="form-control" min="1" max="20" value="2" required="">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="children">Anak</label>
+                    <input type="number" name="children" id="children" class="form-control" min="0" max="20" value="0">
+                  </div>
+                  <div class="col-md-12 text-center">
+                    <button type="submit" class="btn btn-accent w-100 mt-3">Cari Paket Wisata</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
       </div>
-      <div class="card animate-fade">
-        <img src="images/lawangsewu.JPG" alt="Lawang Sewu">
-        <h3>Lawang Sewu</h3>
-        <p>Bangunan bersejarah di Semarang dengan arsitektur megah dan cerita masa kolonial Belanda.</p>
+
+    </section><!-- /Travel Hero Section -->
+
+    <!-- Featured Destinations Section -->
+    <section id="featured-destinations" class="featured-destinations section">
+
+      <div class="container section-title">
+        <h2>Destinasi Unggulan</h2>
+        <div><span>Jelajahi</span> <span class="description-title">Destinasi Terbaik</span></div>
       </div>
-      <div class="card animate-fade">
-        <img src="images/dieng.JPG" alt="Dieng Plateau">
-        <h3>Dieng Plateau</h3>
-        <p>Negeri di atas awan dengan pemandangan alam indah, kawah berwarna, dan budaya unik anak gimbal.</p>
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-4 col-md-6">
+            <div class="destination-card">
+              <div class="image-wrapper">
+                <img src="assets/img/travel/destination-1.jpg" alt="Borobudur" class="img-fluid">
+                <div class="overlay">
+                  <div class="badge">Unggulan</div>
+                </div>
+              </div>
+              <div class="content">
+                <h4>Borobudur, Jawa Tengah</h4>
+                <p>Candi Buddha terbesar di dunia yang menjadi ikon pariwisata Jawa Tengah dan warisan dunia UNESCO.</p>
+                <div class="features">
+                  <span class="feature-tag">Sejarah</span>
+                  <span class="feature-tag">Budaya</span>
+                </div>
+                <div class="card-footer">
+                  <div class="tours-count">5 Paket Tersedia</div>
+                  <a href="destinasi.html" class="explore-btn">
+                    Jelajahi <i class="bi bi-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="destination-card">
+              <div class="image-wrapper">
+                <img src="assets/img/travel/destination-5.jpeg" alt="Gunung Bromo" class="img-fluid">
+                <div class="overlay">
+                  <div class="badge featured">Editor's Pick</div>
+                </div>
+              </div>
+              <div class="content">
+                <h4>Gunung Bromo, Jawa Timur</h4>
+                <p>Temukan keindahan gunung berapi aktif dengan pemandangan sunrise yang spektakuler di tengah lautan pasir.</p>
+                <div class="features">
+                  <span class="feature-tag">Petualangan</span>
+                  <span class="feature-tag">Alam</span>
+                </div>
+                <div class="card-footer">
+                  <div class="tours-count">8 Paket Tersedia</div>
+                  <a href="destinasi.html" class="explore-btn">
+                    Jelajahi <i class="bi bi-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="destination-card">
+              <div class="image-wrapper">
+                <img src="assets/img/travel/destination-8.webp" alt="Pantai Pangandaran" class="img-fluid">
+                <div class="overlay">
+                  <div class="badge new">Baru</div>
+                </div>
+              </div>
+              <div class="content">
+                <h4>Pantai Pangandaran, Jawa Barat</h4>
+                <p>Surga pantai dengan pasir putih, ombak yang cocok untuk surfing, dan keindahan alam yang memukau.</p>
+                <div class="features">
+                  <span class="feature-tag">Pantai</span>
+                  <span class="feature-tag">Petualangan</span>
+                </div>
+                <div class="card-footer">
+                  <div class="tours-count">6 Paket Tersedia</div>
+                  <a href="destinasi.html" class="explore-btn">
+                    Jelajahi <i class="bi bi-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="destinations-cta">
+          <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+              <h3>Tidak Yakin Mau Kemana?</h3>
+              <p>Tim ahli kami siap membantu Anda menemukan destinasi sempurna berdasarkan preferensi, budget, dan gaya perjalanan Anda.</p>
+              <div class="cta-buttons">
+                <a href="destinasi.html" class="btn btn-primary">Lihat Semua Destinasi</a>
+                <a href="kontak.html" class="btn btn-outline">Konsultasi Ahli</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
-      <div class="card animate-fade">
-        <img src="images/jatijajar.JPG" alt="Goa Jatijajar">
-        <h3>Goa Jatijajar</h3>
-        <p>Objek wisata alam berupa goa kapur alami di Kebumen yang penuh legenda dan keindahan alam.</p>
+
+    </section><!-- /Featured Destinations Section -->
+
+    <!-- Call To Action Section -->
+    <section id="call-to-action" class="call-to-action section">
+
+      <div class="container">
+
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center">
+            <h2>Siap Memulai Petualangan Anda?</h2>
+            <p>Jelajahi destinasi menakjubkan, ciptakan kenangan tak terlupakan, dan eksplorasi dunia dengan paket wisata kami yang dirancang secara ahli. Dari pantai tropis hingga puncak gunung, perjalanan sempurna Anda menanti.</p>
+            <div class="cta-buttons">
+              <a href="destinasi.html" class="btn-primary">Jelajahi Destinasi</a>
+              <a href="paket.html" class="btn-secondary">Rencanakan Perjalanan</a>
+            </div>
+          </div>
+        </div>
+
       </div>
-      <div class="card animate-fade">
-        <img src="images/karimun.JPG" alt="Karimunjawa">
-        <h3>Karimunjawa</h3>
-        <p>Kepulauan tropis yang memukau dengan pantai jernih dan terumbu karang menawan di Laut Jawa.</p>
+
+    </section><!-- /Call To Action Section -->
+
+  </main>
+
+  <footer id="footer" class="footer position-relative dark-background">
+
+    <div class="container">
+      <div class="row gy-5">
+
+        <div class="col-lg-4">
+          <div class="footer-content">
+            <a href="index.html" class="logo d-flex align-items-center mb-4">
+              <span class="sitename">MIKROTRAVEL</span>
+            </a>
+            <p class="mb-4">Platform pariwisata yang fokus pada keindahan Pulau Jawa, menyediakan informasi dan paket wisata terbaik untuk pengalaman tak terlupakan.</p>
+
+            <div class="newsletter-form">
+              <h5>Tetap Update</h5>
+              <form action="forms/newsletter.php" method="post" class="php-email-form">
+                <div class="input-group">
+                  <input type="email" name="email" class="form-control" placeholder="Masukkan email Anda" required="">
+                  <button type="submit" class="btn-subscribe">
+                    <i class="bi bi-send"></i>
+                  </button>
+                </div>
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Terima kasih telah berlangganan!</div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-6">
+          <div class="footer-links">
+            <h4>Perusahaan</h4>
+            <ul>
+              <li><a href="tentang.html"><i class="bi bi-chevron-right"></i> Tentang</a></li>
+              <li><a href="blog.html"><i class="bi bi-chevron-right"></i> Blog</a></li>
+              <li><a href="kontak.html"><i class="bi bi-chevron-right"></i> Kontak</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-6">
+          <div class="footer-links">
+            <h4>Layanan</h4>
+            <ul>
+              <li><a href="paket.html"><i class="bi bi-chevron-right"></i> Paket Wisata</a></li>
+              <li><a href="destinasi.html"><i class="bi bi-chevron-right"></i> Destinasi</a></li>
+
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="footer-contact">
+            <h4>Hubungi Kami</h4>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="bi bi-geo-alt"></i>
+              </div>
+              <div class="contact-info">
+                <p>FKIP JPTK UNS Kampus V<br>Jl. A. Yani No.200, Dusun II, Pabelan, Kartasura, Sukoharjo,</p>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="bi bi-telephone"></i>
+              </div>
+              <div class="contact-info">
+                <p>+62 859-3566-9277<br>(Ridwan)</p>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="bi bi-envelope"></i>
+              </div>
+              <div class="contact-info">
+                <p>MIKROTRAVEL@gmai.com</p>
+              </div>
+            </div>
+
+            <div class="social-links">
+              <a href="https://www.facebook.com/UNSOfficial/"><i class="bi bi-facebook"></i></a>
+              <a href="https://www.instagram.com/uns.official/"><i class="bi bi-instagram"></i></a>
+              <a href="https://x.com/11MaretUniv"><i class="bi bi-twitter-x"></i></a>
+              <a href="https://www.youtube.com/@universitassebelasmaret2268"><i class="bi bi-youtube"></i></a>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
-  </section>
 
-  <!-- Tentang (sama dengan isi about.html) -->
-  <section class="tentang" id="tentang">
-    <h2 class="animate-fade">Tentang MikroTravel</h2>
-    <p class="animate-fade">
-      MikroTravel Central Java adalah website travel sederhana yang bertujuan mengenalkan keindahan wisata di Jawa Tengah untuk pelajar lokal. Dirancang dengan gaya modern, ringan, dan informatif.
-    </p>
-  </section>
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <div class="copyright">
+              <p>© <span>Copyright</span> <strong class="px-1 sitename">MIKROTRAVEL</strong> <span>All Rights Reserved</span></p>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="footer-bottom-links">
+              <a href="#">Privacy Policy</a>
+              <a href="#">Terms of Service</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <h3>MikroTravel Central Java</h3>
-    <p>© 2025 MikroTravel. Semua hak cipta dilindungi.</p>
   </footer>
 
-  <!-- Tombol Scroll to Top -->
-  <button id="scrollTopBtn" title="Kembali ke atas">↑</button>
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <script src="script.js"></script>
+  <!-- Preloader -->
+  <div id="preloader"></div>
 
-  <!-- Scroll Halus -->
-  <script>
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
-      });
-    });
-  </script>
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
 
 </body>
+
 </html>
