@@ -44,12 +44,13 @@
           <li><a href="paket.html" class="active">Paket Wisata</a></li>
           <li><a href="tentang.html">Tentang Kami</a></li>
           <li><a href="blog.html">Blog/Tips</a></li>
+          <li><a href="booking.html">Booking</a></li>
           <li><a href="kontak.html">Kontak</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <a class="btn-getstarted" href="paket.html">Pesan Sekarang</a>
+      <a class="btn btn-primary btn-getstarted" href="booking.html">Pesan Sekarang</a>
 
     </div>
   </header>
@@ -70,6 +71,14 @@
       </div>
     </div><!-- End Page Title -->
 
+    <!-- Booking Summary (populated from index.html params) -->
+    <div id="booking-summary" class="container mb-4" style="display:none;">
+      <div class="alert alert-primary" role="alert">
+        <strong>Ringkasan Pemesanan:</strong>
+        <div id="booking-summary-content"></div>
+      </div>
+    </div>
+
     <!-- Travel Tours Section -->
     <section id="travel-tours" class="travel-tours section">
 
@@ -83,7 +92,7 @@
           </div>
         </div>
 
-        <!-- Search & Filters -->
+        <!-- Search & Filters
         <div class="row justify-content-center mb-5">
           <div class="col-lg-10">
             <div class="search-container">
@@ -103,7 +112,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
 
         <!-- Featured Hero Tour -->
         <div class="row mb-5">
@@ -133,8 +142,8 @@
                   <span class="amount">Rp 2.500.000</span>
                 </div>
                 <div class="featured-actions">
-                  <a href="#" class="btn btn-primary">Jelajahi Perjalanan Ini</a>
-                  <a href="#" class="btn btn-text">Lihat Itinerary</a>
+                  <a href="https://www.borobudursunrise.net/news430-mitos-dan-fakta-menarik-candi-borobudur-termasuk-misteri-isi-stupa-utama.html" target="_blank" class="btn btn-primary">Jelajahi Perjalanan Ini</a>
+                  <!-- <a href="#" class="btn btn-ghost">Lihat Itinerary</a> -->
                 </div>
               </div>
             </div>
@@ -201,7 +210,7 @@
             </div>
 
             <div class="tours-grid">
-              <div class="tour-item">
+              <div class="tour-item" data-pkg="bromo">
                 <div class="tour-image">
                   <img src="assets/img/travel/bromo paket.jpg" alt="Gunung Bromo Sunrise" class="img-fluid">
                   <div class="tour-availability">5 tanggal tersedia</div>
@@ -218,10 +227,11 @@
                     <span class="price">Rp 1.800.000</span>
                     <span class="per">per orang</span>
                   </div>
+                  <div class="book-now-container"><a class="book-now btn btn-primary" href="booking.html?pkg=bromo">Pesan Paket Ini</a></div>
                 </div>
               </div>
 
-              <div class="tour-item">
+              <div class="tour-item" data-pkg="borobudur">
                 <div class="tour-image">
                   <img src="assets/img/travel/candi paket.jpg" alt="Borobudur & Prambanan" class="img-fluid">
                   <div class="tour-availability">Spot terbatas</div>
@@ -238,10 +248,11 @@
                     <span class="price">Rp 2.200.000</span>
                     <span class="per">per orang</span>
                   </div>
+                  <div class="book-now-container"><a class="book-now btn btn-primary" href="booking.html?pkg=borobudur">Pesan Paket Ini</a></div>
                 </div>
               </div>
 
-              <div class="tour-item">
+              <div class="tour-item" data-pkg="pangandaran">
                 <div class="tour-image">
                   <img src="assets/img/travel/pangandaran paket.jpg" alt="Pantai Pangandaran" class="img-fluid">
                   <div class="tour-availability">Selanjutnya: Mar 15</div>
@@ -258,10 +269,11 @@
                     <span class="price">Rp 1.500.000</span>
                     <span class="per">per orang</span>
                   </div>
+                  <div class="book-now-container"><a class="book-now btn btn-primary" href="booking.html?pkg=pangandaran">Pesan Paket Ini</a></div>
                 </div>
               </div>
 
-              <div class="tour-item">
+              <div class="tour-item" data-pkg="jakarta">
                 <div class="tour-image">
                   <img src="assets/img/travel/jakarta paket.jpg" alt="Jakarta City Tour" class="img-fluid">
                   <div class="tour-availability">Musim kemarau</div>
@@ -278,10 +290,11 @@
                     <span class="price">Rp 900.000</span>
                     <span class="per">per orang</span>
                   </div>
+                  <div class="book-now-container"><a class="book-now btn btn-primary" href="booking.html?pkg=jakarta">Pesan Paket Ini</a></div>
                 </div>
               </div>
 
-              <div class="tour-item">
+              <div class="tour-item" data-pkg="bandung">
                 <div class="tour-image">
                   <img src="assets/img/travel/bandung paket.jpg" alt="Bandung Creative City" class="img-fluid">
                   <div class="tour-availability">Sepanjang tahun</div>
@@ -298,10 +311,11 @@
                     <span class="price">Rp 1.200.000</span>
                     <span class="per">per orang</span>
                   </div>
+                  <div class="book-now-container"><a class="book-now btn btn-primary" href="booking.html?pkg=bandung">Pesan Paket Ini</a></div>
                 </div>
               </div>
 
-              <div class="tour-item">
+              <div class="tour-item" data-pkg="dieng">
                 <div class="tour-image">
                   <img src="assets/img/travel/dieng paket.jpg" alt="Dieng Plateau" class="img-fluid">
                   <div class="tour-availability">Eco-certified</div>
@@ -318,6 +332,7 @@
                     <span class="price">Rp 1.000.000</span>
                     <span class="per">per orang</span>
                   </div>
+                  <div class="book-now-container"><a class="book-now btn btn-primary" href="booking.html?pkg=dieng">Pesan Paket Ini</a></div>
                 </div>
               </div>
             </div>
@@ -337,8 +352,8 @@
                   <div class="offer-tag">Early Bird</div>
                   <h4>Hemat 25% untuk Keberangkatan Musim Panas</h4>
                   <p>Pesan petualangan Jawa Anda sebelum 31 Maret dan nikmati diskon besar untuk rute terpopuler.</p>
-                  <div class="offer-validity">Berlaku hingga 31 Maret 2024</div>
-                  <a href="#" class="btn btn-accent">Klaim Penawaran</a>
+                  <div class="offer-validity">Berlaku hingga 31 Maret 2025</div>
+                  <a href="#" class="btn btn-primary">Klaim Penawaran</a>
                 </div>
               </div>
 
@@ -351,7 +366,7 @@
                   <h4>Wisata Bromo - Diskon 30%</h4>
                   <p>Bergabunglah dengan keberangkatan berikutnya ke Gunung Bromo dengan akomodasi mewah dan pemandu ahli.</p>
                   <div class="offer-validity">Keberangkatan: 20 Februari</div>
-                  <a href="#" class="btn btn-accent">Pesan Sekarang</a>
+                  <a href="#" class="btn btn-primary">Pesan Sekarang</a>
                 </div>
               </div>
             </div>
@@ -366,7 +381,7 @@
               <p>Tim desainer perjalanan kami merancang perjalanan bespoke yang disesuaikan dengan preferensi, jadwal, dan impian unik Anda.</p>
               <div class="cta-actions">
                 <a href="kontak.html" class="btn btn-primary">Bicara dengan Ahli</a>
-                <a href="#" class="btn btn-text">Jelajahi Paket Kustom</a>
+                <a href="booking.html" class="btn btn-ghost">Jelajahi Paket Kustom</a>
               </div>
             </div>
           </div>
@@ -395,8 +410,8 @@
               <form action="forms/newsletter.php" method="post" class="php-email-form">
                 <div class="input-group">
                   <input type="email" name="email" class="form-control" placeholder="Masukkan email Anda" required="">
-                  <button type="submit" class="btn-subscribe">
-                    <i class="bi bi-send"></i>
+                  <button type="submit" class="btn-subscribe btn btn-primary" aria-label="Kirim email">
+                    <i class="bi bi-send" aria-hidden="true"></i>
                   </button>
                 </div>
                 <div class="loading">Loading</div>
@@ -460,10 +475,10 @@
             </div>
 
             <div class="social-links">
-              <a href="https://www.facebook.com/UNSOfficial/"><i class="bi bi-facebook"></i></a>
-              <a href="https://www.instagram.com/uns.official/"><i class="bi bi-instagram"></i></a>
-              <a href="https://x.com/11MaretUniv"><i class="bi bi-twitter-x"></i></a>
-              <a href="https://www.youtube.com/@universitassebelasmaret2268"><i class="bi bi-youtube"></i></a>
+              <a href="https://www.facebook.com/UNSOfficial/" aria-label="Facebook"><i class="bi bi-facebook" aria-hidden="true"></i></a>
+              <a href="https://www.instagram.com/uns.official/" aria-label="Instagram"><i class="bi bi-instagram" aria-hidden="true"></i></a>
+              <a href="https://x.com/11MaretUniv" aria-label="X (Twitter)"><i class="bi bi-twitter-x" aria-hidden="true"></i></a>
+              <a href="https://www.youtube.com/@universitassebelasmaret2268" aria-label="YouTube"><i class="bi bi-youtube" aria-hidden="true"></i></a>
             </div>
           </div>
         </div>
@@ -492,19 +507,133 @@
   </footer>
 
   <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center" aria-label="Kembali ke atas"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <!-- Preloader -->
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Populate booking summary from query params (if present)
+    (function(){
+      try{
+        const params = new URLSearchParams(window.location.search);
+        const dest = params.get('destination');
+        const checkin = params.get('checkin');
+        const checkout = params.get('checkout');
+        const adults = params.get('adults') || '1';
+        const children = params.get('children') || '0';
+        const total = params.get('total') || '0';
+        if (dest || checkin || checkout) {
+          const container = document.getElementById('booking-summary');
+          const content = document.getElementById('booking-summary-content');
+          if (container && content) {
+            const name = (function(){
+              const map = {banten:'Banten', jakarta:'DKI Jakarta', jabar:'Jawa Barat', jateng:'Jawa Tengah', yogya:'DI Yogyakarta', jatim:'Jawa Timur'};
+              return map[dest] || dest || '—';
+            })();
+            const currency = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits:0 });
+            const summaryHtml = `
+              <div class="booking-summary-panel">
+                <div>
+                  <div class="summary-text">Provinsi: ${name}</div>
+                  <div class="summary-sub">Tanggal: ${checkin || '—'} → ${checkout || '—'} • Dewasa: ${adults}, Anak: ${children}</div>
+                </div>
+                <div>
+                  <div style="text-align:right">Estimasi: <strong>${currency.format(Number(total) || 0)}</strong></div>
+                  <div style="margin-top:8px;text-align:right"><a id="btn-continue-booking" class="btn-book-now btn btn-primary" href="#">Lanjutkan Pesan</a></div>
+                </div>
+              </div>
+            `;
+            content.innerHTML = summaryHtml;
+            // set link with params to kontak.html
+            const btn = document.getElementById('btn-continue-booking');
+            if (btn) {
+              const paramsForContact = new URLSearchParams({ destination: dest || '', checkin: checkin || '', checkout: checkout || '', adults: adults || '', children: children || '', total: total || '' });
+              btn.setAttribute('href', 'kontak.html?' + paramsForContact.toString());
+            }
+            container.style.display = 'block';
+          }
+        }
+      }catch(e){console.warn(e)}
+    })();
+    // Highlight and scroll to matching tour(s) based on params
+    (function(){
+      try{
+        const params = new URLSearchParams(window.location.search);
+        const dest = params.get('destination');
+        const pkg = params.get('pkg');
+        if (!dest && !pkg) return;
+
+        const mapping = {
+          jateng: ['borobudur','dieng','prambanan'],
+          jatim: ['bromo'],
+          jabar: ['pangandaran','bandung'],
+          jakarta: ['jakarta'],
+          yogya: ['yogyakarta','yogya'],
+          banten: ['banten']
+        };
+
+        const tours = document.querySelectorAll('.tours-grid .tour-item');
+        let first = null;
+        tours.forEach(t => {
+          const titleEl = t.querySelector('.tour-details h4');
+          const title = (titleEl && titleEl.textContent) ? titleEl.textContent.toLowerCase() : '';
+          let matched = false;
+          if (pkg && title.includes(pkg.toLowerCase())) matched = true;
+          if (!matched && dest && mapping[dest]) {
+            mapping[dest].forEach(k => { if (title.includes(k)) matched = true; });
+          }
+          if (matched) {
+            t.classList.add('highlight');
+            if (!first) first = t;
+          }
+        });
+        if (first) {
+          setTimeout(() => first.scrollIntoView({ behavior: 'smooth', block: 'center' }), 300);
+        }
+      }catch(e){ console.warn(e); }
+    })();
+  </script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
+  <!-- Small script to enable keyword search/filter and pass selections to booking -->
+  <script>
+    (function(){
+      const input = document.querySelector('.search-bar input');
+      const grid = document.querySelectorAll('.tours-grid .tour-item');
+      function filter(q){
+        const s = (q||'').toLowerCase().trim();
+        grid.forEach(item=>{
+          const title = item.querySelector('.tour-details h4')?.textContent.toLowerCase() || '';
+          const desc = item.querySelector('.tour-details p')?.textContent.toLowerCase() || '';
+          const ok = title.includes(s) || desc.includes(s);
+          item.style.display = ok ? '' : 'none';
+        });
+      }
+      if (input) {
+        input.addEventListener('input', (e)=>filter(e.target.value));
+      }
+
+      // allow pills to filter by category keywords
+      document.querySelectorAll('.filter-pill').forEach(p=>{
+        p.addEventListener('click', ()=>{
+          document.querySelectorAll('.filter-pill').forEach(x=>x.classList.remove('active'));
+          p.classList.add('active');
+          const f = p.getAttribute('data-filter');
+          if (f && f !== 'all') {
+            grid.forEach(item=>{ const title = item.querySelector('.tour-details h4')?.textContent.toLowerCase()||''; item.style.display = title.includes(f) ? '' : 'none'; });
+          } else { grid.forEach(item=>item.style.display=''); }
+        });
+      });
+    })();
+  </script>
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>

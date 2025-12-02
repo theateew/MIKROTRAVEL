@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Booking - MIKROTRAVEL</title>
+  <meta name="description" content="Form booking mikrotravel">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+  <style>
+    /* Booking-page specific color overrides: orange palette + white text */
+    .booking-page .btn-primary,
+    .booking-page .bg-primary { background-color: #D75547 !important; border-color: #D75547 !important; color: #ffffff !important; }
+
+    /* Page title (hero) text should be white */
+    .booking-page .page-title .container h1,
+    .booking-page .page-title .container p,
+    .booking-page .page-title .breadcrumbs a,
+    .booking-page .page-title .breadcrumbs .current { color: #ffffff !important; }
+
+    /* Header navigation and sitename */
+    .booking-page #header .navmenu ul li a { color: #ffffff !important; }
+    /* Keep the active/hovered nav item visible and matching site accent */
+    .booking-page #header .navmenu ul li a.active,
+    .booking-page #header .navmenu ul li a:hover,
+    .booking-page #header .navmenu ul li a:focus { color: #D75547 !important; }
+    .booking-page .logo .sitename { color: #ffffff !important; }
+
+    /* Card header background/heading color */
+    .booking-page .card-header.bg-primary { background-color: #D75547 !important; color: #000000 !important; }
+
+    /* Ensure price and button texts are visible */
+    .booking-page #price-breakdown strong, .booking-page #sum-total, .booking-page .card h5 { color: #000000 !important; }
+    .booking-page #price-breakdown strong, .booking-page #sum-total, .booking-page .card h6 { color: #ffffff !important; }
+    /* Price summary card - make text color #D75547 */
+    .booking-page #ind-price-summary .h6,
+    .booking-page #ind-price-summary .h5,
+    .booking-page #ind-price-summary .form-label,
+    .booking-page #ind-price-summary div { color: #D75547 !important; }
+    
+    /* Price breakdown on right sidebar */
+    .booking-page #price-breakdown { color: #000000 !important; }
+    .booking-page #price-breakdown div { color: #000000 !important; }
+    .booking-page #price-breakdown strong,
+    .booking-page #sum-package,
+    .booking-page #sum-transport,
+    .booking-page #sum-total { 
+      color: #000000 !important; 
+      font-weight: bold !important;
+    }
+
+    /* Small adjustments for footer links contrast on dark backgrounds */
+    .booking-page .footer, .booking-page .footer .footer-bottom { color: #ffffff; }
+    .booking-page .footer a { color: #ffffff !important; }
+  </style>
+</head>
+
+<body class="booking-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <img src="assets/img/icon.png" alt="">
+        <h1 class="sitename">MIKROTRAVEL</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="destinasi.html">Destinasi</a></li>
+          <li><a href="paket.html">Paket Wisata</a></li>
+          <li><a href="tentang.html">Tentang Kami</a></li>
+          <li><a href="blog.html">Blog/Tips</a></li>
+          <li><a href="booking.html" class="active">Booking</a></li>
+          <li><a href="kontak.html">Kontak</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <a class="btn btn-primary btn-getstarted" href="booking.html">Pesan Sekarang</a>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title dark-background" style="background-image: url(assets/img/travel/booking.jpg);">
+      <div class="container position-relative">
+        <h1>Pesan Wisata Anda</h1>
+        <p>Pesan paket wisata impian Anda dengan mudah dan cepat.</p>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li class="current">Booking</li>
+          </ol>
+        </nav>
+      </div>
+    </div><!-- End Page Title -->
+
+    <div class="container" style="padding-top:40px;">
+      <!-- Independent Search Form -->
+      <div class="row mb-5">
+        <div class="col-lg-8">
+          <div class="card">
+            <div class="card-header bg-primary text-white">
+              <h6 class="mb-0">Cari Paket Wisata Sendiri</h6>
+            </div>
+            <div class="card-body">
+              <p class="text-muted">Tidak datang dari halaman pencarian? Gunakan form di bawah untuk mencari paket wisata.</p>
+              <form id="independent-search-form" method="get">
+                <div class="row gy-3">
+                  <div class="col-md-6">
+                    <label for="ind-province" class="form-label">Provinsi Tujuan</label>
+                    <select name="province" id="ind-province" class="form-control" required="">
+                      <option value="">Pilih Provinsi</option>
+                      <option value="banten">Banten</option>
+                      <option value="jakarta">DKI Jakarta</option>
+                      <option value="jabar">Jawa Barat</option>
+                      <option value="jateng">Jawa Tengah</option>
+                      <option value="yogya">DI Yogyakarta</option>
+                      <option value="jatim">Jawa Timur</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="ind-destination" class="form-label">Tujuan Wisata</label>
+                    <select name="destination" id="ind-destination" class="form-control" required="">
+                      <option value="">Pilih Destinasi</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="ind-checkin" class="form-label">Tanggal Berangkat</label>
+                    <input type="date" name="checkin" id="ind-checkin" class="form-control" required="">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="ind-checkout" class="form-label">Tanggal Pulang</label>
+                    <input type="date" name="checkout" id="ind-checkout" class="form-control" required="">
+                  </div>
+                  <div class="col-md-4">
+                    <label for="ind-adults" class="form-label">Jumlah Dewasa</label>
+                    <input type="number" name="adults" id="ind-adults" class="form-control" min="1" max="20" value="2" required="">
+                  </div>
+                  <div class="col-md-4">
+                    <label for="ind-children" class="form-label">Jumlah Anak</label>
+                    <input type="number" name="children" id="ind-children" class="form-control" min="0" max="20" value="0">
+                  </div>
+                  <div class="col-md-4">
+                    <label for="ind-transport" class="form-label">Moda Transportasi</label>
+                    <select id="ind-transport" class="form-control">
+                      <option value="kereta">Kereta</option>
+                      <option value="bus">Bis</option>
+                      <option value="pesawat">Pesawat</option>
+                    </select>
+                  </div>
+                  <div class="col-md-12 text-center">
+                    <button type="button" id="ind-submit-btn" class="btn btn-primary">Pilih Paket Ini</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="card">
+            <div class="card-header bg-primary text-white">
+              <h6 class="mb-0">Ringkasan Harga</h6>
+            </div>
+            <div class="card-body" id="ind-price-summary" style="display:none;">
+              <div class="mb-3">
+                <label class="form-label">Harga Paket (per orang)</label>
+                <div class="h5" id="ind-price-per-person">-</div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Total Paket</label>
+                <div class="h5" id="ind-price-package">-</div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Harga Transportasi</label>
+                <div class="h5" id="ind-price-transport">-</div>
+              </div>
+              <hr>
+              <div>
+                <label class="form-label">Total Harga</label>
+                <div class="h5" id="ind-price-total" style="color: #D75547; font-weight: bold;">-</div>
+              </div>
+            </div>
+            <div class="card-body text-muted text-center" id="ind-price-placeholder">
+              <p><em>Pilih destinasi dan transportasi untuk melihat harga</em></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Booking Form Section -->
+      <div class="row">
+      <div class="row">
+        <div class="col-lg-8">
+
+          <div class="card mb-4">
+            <div class="card-body">
+              <h4 class="card-title">Paket Wisata yang Dipilih</h4>
+              <div id="package-display" class="mb-4" style="display:none;">
+                <div class="row">
+                  <div class="col-md-4">
+                    <img id="pkg-image" src="" alt="Paket" class="img-fluid" style="border-radius: 8px; height: 200px; object-fit: cover;">
+                  </div>
+                  <div class="col-md-8">
+                    <h5 id="pkg-title"></h5>
+                    <p><strong>Durasi:</strong> <span id="pkg-days"></span></p>
+                    <p><strong>Harga per orang:</strong> <strong id="pkg-price" style="color: var(--accent-color);"></strong></p>
+                    <p><strong>Jumlah Peserta:</strong> <span id="pkg-people"></span></p>
+                    <hr>
+                    <h5>Tanggal Perjalanan</h5>
+                    <p><label for="pkg-checkin"><strong>Berangkat:</strong></label> <input type="date" id="pkg-checkin" /></p>
+                    <p><label for="pkg-checkout"><strong>Pulang:</strong></label> <input type="date" id="pkg-checkout" /></p>
+                  </div>
+                </div>
+              </div>
+              <div id="package-placeholder" class="text-muted">
+                <p>Paket akan ditampilkan setelah pemesanan dari halaman utama.</p>
+              </div>
+
+              <h5>Ringkasan Pemesanan</h5>
+              <div id="booking-selected" class="mb-3">
+                <div id="selected-items">Belum ada pilihan paket/destinasi.</div>
+              </div>
+
+              <h5>Detail Pemesan</h5>
+              <form id="booking-form">
+                <div class="mb-3">
+                  <label class="form-label">Nama Lengkap</label>
+                  <input type="text" id="cust-name" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Email</label>
+                  <input type="email" id="cust-email" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Nomor Telepon</label>
+                  <input type="text" id="cust-phone" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Alamat</label>
+                  <textarea id="cust-address" class="form-control" rows="2"></textarea>
+                </div>
+
+                <h5>Pilih Transportasi</h5>
+                <div class="mb-3">
+                  <label class="form-label">Moda Perjalanan</label>
+                  <select id="transport-mode" class="form-control">
+                    <option value="kereta">Kereta</option>
+                    <option value="bus">Bis</option>
+                    <option value="pesawat">Pesawat</option>
+                  </select>
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">Catatan Tambahan</label>
+                  <textarea id="cust-note" class="form-control" rows="2"></textarea>
+                </div>
+
+              </form>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <div class="card mb-4">
+            <div class="card-body">
+              <h5>Ringkasan Harga</h5>
+              <div id="price-breakdown">
+                <div>Harga paket: <strong id="sum-package">Rp0</strong></div>
+                <div>Harga transport: <strong id="sum-transport">Rp0</strong></div>
+                <div class="mt-2">Total: <h4 id="sum-total">Rp0</h4></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card mb-4">
+            <div class="card-body">
+              <h5>Pembayaran</h5>
+              <form id="payment-form">
+                <div class="mb-2">
+                  <label class="form-label">Pilih Metode</label>
+                  <div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="payment" id="pay-mandiri" value="mandiri" checked>
+                      <label class="form-check-label" for="pay-mandiri">Bank Mandiri</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="payment" id="pay-bni" value="bni">
+                      <label class="form-check-label" for="pay-bni">Bank BNI</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="payment" id="pay-bri" value="bri">
+                      <label class="form-check-label" for="pay-bri">Bank BRI</label>
+                    </div>
+                    <div class="form-check mt-2">
+                      <input class="form-check-input" type="radio" name="payment" id="pay-dana" value="dana">
+                      <label class="form-check-label" for="pay-dana">DANA</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="payment" id="pay-gopay" value="gopay">
+                      <label class="form-check-label" for="pay-gopay">GoPay</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="d-grid gap-2">
+                  <button id="btn-pay" class="btn btn-primary">Bayar & Kirim Tiket (Simulasi)</button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <small class="text-muted">Data akan disimpan sementara selama 2 menit untuk mencegah kehilangan pemesanan.</small>
+              <div id="cache-info" class="mt-2"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer id="footer" class="footer position-relative dark-background">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-4">
+          <div class="footer-info">
+            <a href="index.html" class="logo d-flex align-items-center">
+              <img src="assets/img/icon.png" alt="" style="height:40px;">
+              <span>MIKROTRAVEL</span>
+            </a>
+            <p>Paket wisata terbaik untuk menjelajahi keindahan Pulau Jawa dengan harga yang terjangkau.</p>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-6">
+          <div class="footer-links">
+            <h4>Menu</h4>
+            <ul>
+              <li><a href="index.html"><i class="bi bi-chevron-right"></i> Home</a></li>
+              <li><a href="destinasi.html"><i class="bi bi-chevron-right"></i> Destinasi</a></li>
+              <li><a href="paket.html"><i class="bi bi-chevron-right"></i> Paket Wisata</a></li>
+              <li><a href="tentang.html"><i class="bi bi-chevron-right"></i> Tentang</a></li>
+              <li><a href="kontak.html"><i class="bi bi-chevron-right"></i> Kontak</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-6">
+          <div class="footer-links">
+            <h4>Layanan</h4>
+            <ul>
+              <li><a href="paket.html"><i class="bi bi-chevron-right"></i> Paket Wisata</a></li>
+              <li><a href="destinasi.html"><i class="bi bi-chevron-right"></i> Destinasi</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="footer-contact">
+            <h4>Hubungi Kami</h4>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="bi bi-geo-alt"></i>
+              </div>
+              <div class="contact-info">
+                <p>FKIP JPTK UNS Kampus V<br>Jl. A. Yani No.200, Dusun II, Pabelan, Kartasura, Sukoharjo, Jawa Tengah 57161</p>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="bi bi-telephone"></i>
+              </div>
+              <div class="contact-info">
+                <p>+62 859-3566-9277<br>(Ridwan)</p>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="bi bi-envelope"></i>
+              </div>
+              <div class="contact-info">
+                <p>mikrotravel@gmail.com<br>agenmikrotravel@gmail.com</p>
+              </div>
+            </div>
+
+            <div class="social-links">
+              <a href="https://www.facebook.com/UNSOfficial/" aria-label="Facebook"><i class="bi bi-facebook" aria-hidden="true"></i></a>
+              <a href="https://www.instagram.com/uns.official/" aria-label="Instagram"><i class="bi bi-instagram" aria-hidden="true"></i></a>
+              <a href="https://x.com/11MaretUniv" aria-label="X (Twitter)"><i class="bi bi-twitter-x" aria-hidden="true"></i></a>
+              <a href="https://www.youtube.com/@universitassebelasmaret2268" aria-label="YouTube"><i class="bi bi-youtube" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <div class="copyright">
+              <p>© <span>Copyright</span> <strong class="px-1 sitename">MIKROTRAVEL</strong> <span>All Rights Reserved</span></p>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="footer-bottom-links">
+              <a href="#">Privacy Policy</a>
+              <a href="#">Terms of Service</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Vendor JS Files (needed for header scroll behavior and helpers) -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    // Booking page script
+    (function(){
+      const params = new URLSearchParams(window.location.search);
+      
+      // Currency formatter
+      const currencyFmt = (v)=> new Intl.NumberFormat('id-ID',{style:'currency',currency:'IDR',maximumFractionDigits:0}).format(v);
+      
+      // ==================== INDEPENDENT SEARCH FORM ====================
+      let packagesDataGlobal = [];
+      
+      async function loadPackagesForForm() {
+        try {
+          const resp = await fetch('data/packages.json');
+          if (!resp.ok) throw new Error('Failed to fetch packages.json');
+          const data = await resp.json();
+          packagesDataGlobal = data.packages || [];
+        } catch (err) {
+          console.error('Error loading packages:', err);
+        }
+      }
+      
+      // Initialize independent form handlers
+      const indProvinceEl = document.getElementById('ind-province');
+      const indDestEl = document.getElementById('ind-destination');
+      const indCheckInEl = document.getElementById('ind-checkin');
+      const indCheckOutEl = document.getElementById('ind-checkout');
+      const indAdultsEl = document.getElementById('ind-adults');
+      const indChildrenEl = document.getElementById('ind-children');
+      const indTransportEl = document.getElementById('ind-transport');
+      const indSubmitBtn = document.getElementById('ind-submit-btn');
+      
+      // Price summary elements
+      const indPriceSummary = document.getElementById('ind-price-summary');
+      const indPricePlaceholder = document.getElementById('ind-price-placeholder');
+      const indPricePerPerson = document.getElementById('ind-price-per-person');
+      const indPricePackage = document.getElementById('ind-price-package');
+      const indPriceTransport = document.getElementById('ind-price-transport');
+      const indPriceTotal = document.getElementById('ind-price-total');
+      
+      // Transport base prices and province factors
+      const transportBase = { kereta:150000, bus:100000, pesawat:400000 };
+      const provinceFactor = { jatim:1.5, jateng:1.0, jabar:0.9, jakarta:0.7, banten:0.8, yogya:1.0 };
+      
+      // Update destination dropdown based on selected province
+      indProvinceEl.addEventListener('change', function() {
+        const province = this.value;
+        indDestEl.innerHTML = '<option value="">Pilih Destinasi</option>';
+        
+        if (!province) return;
+        
+        const destsByProvince = packagesDataGlobal.filter(p => p.province === province);
+        const uniqueDests = [...new Set(destsByProvince.map(p => p.id))];
+        
+        uniqueDests.forEach(destId => {
+          const pkg = destsByProvince.find(p => p.id === destId);
+          if (pkg) {
+            const opt = document.createElement('option');
+            opt.value = destId;
+            opt.textContent = pkg.title;
+            indDestEl.appendChild(opt);
+          }
+        });
+        
+        calculateIndependentPrice();
+      });
+      
+      // Calculate price when inputs change
+      function calculateIndependentPrice() {
+        const destId = indDestEl.value;
+        const province = indProvinceEl.value;
+        const transport = indTransportEl.value;
+        const adults = Math.max(1, parseInt(indAdultsEl.value || 1, 10));
+        const children = Math.max(0, parseInt(indChildrenEl.value || 0, 10));
+        
+        if (!destId || !province) {
+          indPriceSummary.style.display = 'none';
+          indPricePlaceholder.style.display = 'block';
+          return;
+        }
+        
+        const pkg = packagesDataGlobal.find(p => p.id === destId);
+        if (!pkg) {
+          indPriceSummary.style.display = 'none';
+          indPricePlaceholder.style.display = 'block';
+          return;
+        }
+        
+        // Calculate package total: adults * price + children * (25% of price)
+        const pkgTotal = (adults * pkg.price) + (children * pkg.price * 0.25);
+        
+        // Calculate transport total
+        const factor = provinceFactor[province] || 1.0;
+        const transportPerAdult = (transportBase[transport] || 0) * factor;
+        const transportTotal = (adults * transportPerAdult) + (children * transportPerAdult * 0.25);
+        
+        // Grand total
+        const grandTotal = pkgTotal + transportTotal;
+        
+        // Update display
+        indPricePerPerson.textContent = currencyFmt(pkg.price);
+        indPricePackage.textContent = currencyFmt(Math.round(pkgTotal));
+        indPriceTransport.textContent = currencyFmt(Math.round(transportTotal));
+        indPriceTotal.textContent = currencyFmt(Math.round(grandTotal));
+        
+        // Show summary card
+        indPriceSummary.style.display = 'block';
+        indPricePlaceholder.style.display = 'none';
+      }
+      
+      indDestEl.addEventListener('change', calculateIndependentPrice);
+      indAdultsEl.addEventListener('change', calculateIndependentPrice);
+      indChildrenEl.addEventListener('change', calculateIndependentPrice);
+      indTransportEl.addEventListener('change', calculateIndependentPrice);
+      
+      // Submit independent search form
+      indSubmitBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const province = indProvinceEl.value;
+        const destId = indDestEl.value;
+        const checkin = indCheckInEl.value;
+        const checkout = indCheckOutEl.value;
+        const adults = Math.max(1, parseInt(indAdultsEl.value || 1, 10));
+        const children = Math.max(0, parseInt(indChildrenEl.value || 0, 10));
+        const transport = indTransportEl.value;
+        
+        if (!province || !destId || !checkin || !checkout) {
+          alert('Mohon lengkapi semua field yang wajib diisi.');
+          return;
+        }
+        
+        const pkg = packagesDataGlobal.find(p => p.id === destId);
+        if (!pkg) {
+          alert('Destinasi tidak ditemukan.');
+          return;
+        }
+        
+        // Calculate total price
+        const total = (adults * pkg.price) + (children * pkg.price * 0.25);
+        
+        // Build URL params and reload page with new data
+        const newParams = new URLSearchParams({
+          pkg: destId,
+          pkg_title: pkg.title,
+          pkg_img: pkg.img || '',
+          pkg_price: pkg.price.toString(),
+          pkg_days: pkg.days || '',
+          destination: province,
+          checkin: checkin,
+          checkout: checkout,
+          adults: adults.toString(),
+          children: children.toString(),
+          total: total.toString(),
+          transport: transport
+        });
+        
+        window.location.href = 'booking.html?' + newParams.toString();
+      });
+      
+      // Load packages on page load
+      loadPackagesForForm();
+
+      // ==================== EXISTING BOOKING LOGIC ====================
+      const pkg = params.get('pkg');
+      const pkgTitle = params.get('pkg_title') || '';
+      const pkgImg = params.get('pkg_img') || '';
+      const pkgPrice = Number(params.get('pkg_price') || 0);
+      const pkgDays = params.get('pkg_days') || '';
+      const destination = params.get('destination');
+      const checkin = params.get('checkin');
+      const checkout = params.get('checkout');
+      const adults = parseInt(params.get('adults')||'1',10);
+      const children = parseInt(params.get('children')||'0',10);
+      const packageTotalParam = Number(params.get('total')||0);
+      const transportParam = params.get('transport') || 'kereta';
+
+      // Package data will be loaded from data/packages.json
+      let packagesData = [];
+
+      const selectedEl = document.getElementById('selected-items');
+      const sumPackageEl = document.getElementById('sum-package');
+      const sumTransportEl = document.getElementById('sum-transport');
+      const sumTotalEl = document.getElementById('sum-total');
+      const transportSelect = document.getElementById('transport-mode');
+      const btnPay = document.getElementById('btn-pay');
+      const cacheInfo = document.getElementById('cache-info');
+
+      // child discount 75% -> child pays 25%
+      function childFactor() { return 0.25; }
+
+      // Determine package/destination selected (after loading packages)
+      let selected = null;
+
+      function renderSelected() {
+        if (!selected) { selectedEl.innerHTML = '<em>Belum ada pilihan paket/destinasi.</em>'; return; }
+        selectedEl.innerHTML = `<div><strong>${selected.title}</strong> (${selected.type})</div><div>${adults} Dewasa, ${children} Anak</div><div>Tanggal: ${checkin||'-'} → ${checkout||'-'}</div>`;
+      }
+
+      async function loadPackageData() {
+        try {
+          const resp = await fetch('data/packages.json');
+          if (!resp.ok) throw new Error('Failed to fetch packages.json');
+          const data = await resp.json();
+          packagesData = data.packages || [];
+          if (pkg) {
+            const found = packagesData.find(p=>p.id === pkg || p.id === pkg.replace(/\s+/g,'-'));
+            if (found) {
+              selected = { type: 'package', id: found.id, title: found.title, price: found.price };
+            } else {
+              // fallback to passed price if found not in JSON
+              selected = { type: 'package', id: pkg, title: pkgTitle, price: pkgPrice };
+            }
+          }
+          if (!selected && destination) {
+            const destName = params.get('destName') || destination;
+            selected = { type:'destination', id:destination, title: destName, price: packageTotalParam||0 };
+          }
+          renderSelected();
+          calcTotals();
+          updateCacheInfo();
+        } catch (err) {
+          console.error('Error loading package data:', err);
+          // fallback to provided params
+          if (!selected && pkg) {
+            selected = { type:'package', id:pkg, title: pkgTitle || pkg, price: pkgPrice || packageTotalParam||0 };
+            renderSelected();
+            calcTotals();
+          }
+        }
+      }
+
+      function calcTotals() {
+        const pkgPricePerPerson = selected && selected.price ? Number(selected.price):0;
+        const adultsCount = adults;
+        const childrenCount = children;
+        const pkgTotal = (adultsCount * pkgPricePerPerson) + (childrenCount * pkgPricePerPerson * childFactor());
+
+        // transport
+        const mode = transportSelect.value;
+        // derive province for factor
+        const prov = params.get('destination') || params.get('province') || '';
+        const factor = provinceFactor[prov] || 1.0;
+        const transportPerAdult = (transportBase[mode]||0) * factor;
+        const transportTotal = (adultsCount * transportPerAdult) + (childrenCount * transportPerAdult * childFactor());
+
+        const grand = Math.round(pkgTotal + transportTotal);
+        sumPackageEl.textContent = currencyFmt(Math.round(pkgTotal));
+        sumTransportEl.textContent = currencyFmt(Math.round(transportTotal));
+        sumTotalEl.textContent = currencyFmt(grand);
+        return {pkgTotal:Math.round(pkgTotal), transportTotal:Math.round(transportTotal), grand};
+      }
+
+      // Persist to localStorage with 2-minute expiry
+      const STORAGE_KEY = 'mikro_booking';
+      function saveCache(data) {
+        const payload = { ts: Date.now(), data };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+        // cookie for 2 minutes
+        const expires = new Date(Date.now()+120000).toUTCString();
+        document.cookie = `mikro_booking_ts=${payload.ts}; expires=${expires}; path=/`;
+        updateCacheInfo();
+      }
+      function loadCache() {
+        try{
+          const raw = localStorage.getItem(STORAGE_KEY);
+          if (!raw) return null;
+          const payload = JSON.parse(raw);
+          if (Date.now() - payload.ts > 120000) { localStorage.removeItem(STORAGE_KEY); return null; }
+          return payload.data;
+        }catch(e){return null}
+      }
+      function clearCache() { localStorage.removeItem(STORAGE_KEY); cacheInfo.textContent='(cache cleared)'; }
+      function updateCacheInfo(){
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) { cacheInfo.textContent='(tidak ada data tersimpan)'; return; }
+        try{ const payload = JSON.parse(raw); const remain = Math.max(0, 120000 - (Date.now()-payload.ts)); cacheInfo.textContent=`Data tersimpan sementara selama ${Math.ceil(remain/1000)} detik.`;}catch(e){cacheInfo.textContent='(tidak ada data tersimpan)'}
+      }
+
+      // restore existing cache if present
+      const cached = loadCache();
+      if (cached) {
+        // merge into form
+        if (cached.form) {
+          document.getElementById('cust-name').value = cached.form.name || '';
+          document.getElementById('cust-email').value = cached.form.email || '';
+          document.getElementById('cust-phone').value = cached.form.phone || '';
+          document.getElementById('cust-address').value = cached.form.address || '';
+          document.getElementById('cust-note').value = cached.form.note || '';
+        }
+        if (cached.transport) transportSelect.value = cached.transport.mode || transportSelect.value;
+      }
+
+      // Load package data and initialize rendering/totals
+      loadPackageData();
+
+      // Set transport mode from parameter if provided
+      if (transportParam && transportSelect.value) {
+        transportSelect.value = transportParam;
+      }
+
+      // auto-save on change every 3 seconds
+      let saveTimer = null;
+      function scheduleSave(){
+        if (saveTimer) clearTimeout(saveTimer);
+        saveTimer = setTimeout(()=>{
+          const data = { form: { name: document.getElementById('cust-name').value, email: document.getElementById('cust-email').value, phone: document.getElementById('cust-phone').value, address: document.getElementById('cust-address').value, note: document.getElementById('cust-note').value }, transport: { mode: transportSelect.value }, selected };
+          saveCache(data);
+        }, 1000);
+      }
+
+      document.getElementById('booking-form').addEventListener('input', scheduleSave);
+      transportSelect.addEventListener('change', ()=>{ calcTotals(); scheduleSave(); });
+
+      // pay handler
+      btnPay.addEventListener('click', function(e){
+        e.preventDefault();
+        // validate
+        const name = document.getElementById('cust-name').value.trim();
+        const email = document.getElementById('cust-email').value.trim();
+        if (!selected) { alert('Tidak ada paket/destinasi yang dipilih.'); return; }
+        if (!name || !email) { alert('Mohon isi nama dan email.'); return; }
+        const totals = calcTotals();
+        const payment = document.querySelector('input[name="payment"]:checked').value;
+        // simulate payment
+        const confirmation = `Pembayaran sebesar ${currencyFmt(totals.grand)} menggunakan ${payment}.\nSetelah konfirmasi, tiket akan dikirim ke ${email} (simulasi).\nLanjutkan?`;
+        if (!confirm(confirmation)) return;
+        // show loading state on the pay button (prevent double submit)
+        if (typeof setButtonLoading === 'function') setButtonLoading(btnPay, true);
+        else btnPay.disabled = true;
+        // simulate send email
+        setTimeout(()=>{
+          // clear loading in case the page doesn't redirect immediately
+          try { if (typeof setButtonLoading === 'function') setButtonLoading(btnPay, false); else btnPay.disabled = false; } catch(e){}
+          alert(`Notifikasi: tiket telah dikirim ke ${email} (simulasi). Terima kasih.`);
+          // clear cache
+          clearCache();
+          // optionally redirect to kontak or index
+          window.location.href = 'index.html';
+        }, 800);
+      });
+
+      // recalc when transport changes
+      transportSelect.addEventListener('change', calcTotals);
+
+    })();
+  </script>
+
+</body>
+</html>

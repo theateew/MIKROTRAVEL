@@ -1,0 +1,26 @@
+{
+  "priceMap": {
+    "banten": 450000,
+    "jakarta": 600000,
+    "jabar": 500000,
+    "jateng": 550000,
+    "yogya": 480000,
+    "jatim": 650000
+  },
+  "provinceFactors": {
+    "jatim": 1.5,
+    "jateng": 1.0,
+    "jabar": 0.9,
+    "jakarta": 0.7,
+    "banten": 0.8,
+    "yogya": 1.0
+  },
+  "packages": [
+    { "id": "bromo", "province": "jatim", "title": "Gunung Bromo Sunrise Adventure", "days": "3 Hari", "price": 1800000, "img": "assets/img/travel/bromo paket.jpg", "desc": "Sunrise, jeep, kuda." },
+    { "id": "borobudur", "province": "jateng", "title": "Petualangan Borobudur Mistis", "days": "5 Hari", "price": 2500000, "img": "assets/img/travel/borobudur paket.jpeg", "desc": "Candi Borobudur & budaya." },
+    { "id": "pangandaran", "province": "jabar", "title": "Pantai Pangandaran Paradise", "days": "3 Hari", "price": 1500000, "img": "assets/img/travel/pangandaran paket.jpg", "desc": "Pantai, keluarga, surfing." },
+    { "id": "jakarta-city", "province": "jakarta", "title": "Jakarta Modern & Heritage", "days": "2 Hari", "price": 900000, "img": "assets/img/travel/jakarta paket.jpg", "desc": "City tour, museum, kuliner." },
+    { "id": "bandung", "province": "jabar", "title": "Bandung Kota Kreatif", "days": "3 Hari", "price": 1200000, "img": "assets/img/travel/bandung paket.jpg", "desc": "Shopping, kafe, pemandangan." },
+    { "id": "dieng", "province": "jateng", "title": "Dieng Plateau Adventure", "days": "2 Hari", "price": 1000000, "img": "assets/img/travel/dieng paket.jpg", "desc": "Dataran tinggi, telaga, candi." }
+  ]
+}

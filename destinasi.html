@@ -44,12 +44,14 @@
           <li><a href="paket.html">Paket Wisata</a></li>
           <li><a href="tentang.html">Tentang Kami</a></li>
           <li><a href="blog.html">Blog/Tips</a></li>
+          <li><a href="booking.html">Booking</a></li>
+          <li><a href="kontak.html">Kontak</a></li>
           <li><a href="kontak.html">Kontak</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <a class="btn-getstarted" href="paket.html">Pesan Sekarang</a>
+      <a class="btn-getstarted" href="booking.html">Pesan Sekarang</a>
 
     </div>
   </header>
@@ -99,7 +101,7 @@
           <div class="row gy-4 isotope-container destination-grid">
 
             <!-- Banten -->
-            <div class="col-lg-12 destination-item isotope-item filter-banten">
+            <div class="col-lg-12 destination-item isotope-item filter-banten" tabindex="0" data-dest="ujung-kulon" data-province="banten" data-price="2500000">
               <div class="destination-large">
                 <div class="destination-overlay">
                   <img src="assets/img/travel/destination-2.webp" alt="Taman Nasional Ujung Kulon" class="img-fluid" loading="lazy">
@@ -117,7 +119,7 @@
                         </div>
                         <div class="price-tag">Dari Rp 2.500.000</div>
                       </div>
-                      <a href="paket.html" class="explore-btn">
+                      <a href="paket.html" class="explore-btn btn btn-primary">
                         <span>Lihat Paket</span>
                         <i class="bi bi-arrow-right"></i>
                       </a>
@@ -127,7 +129,7 @@
               </div>
             </div>
 
-            <div class="col-lg-3 col-md-6 destination-item isotope-item filter-banten">
+            <div class="col-lg-3 col-md-6 destination-item isotope-item filter-banten" tabindex="0" data-dest="pantai-anyer" data-province="banten" data-price="1200000">
               <div class="destination-small">
                 <div class="destination-overlay">
                   <img src="assets/img/travel/destination-4.jpg" alt="Pantai Anyer" class="img-fluid" loading="lazy">
@@ -148,7 +150,7 @@
             </div>
 
             <!-- Jakarta -->
-            <div class="col-lg-3 col-md-6 destination-item isotope-item filter-jakarta">
+            <div class="col-lg-3 col-md-6 destination-item isotope-item filter-jakarta" tabindex="0" data-dest="monas" data-province="jakarta" data-price="800000">
               <div class="destination-small">
                 <div class="destination-overlay">
                   <img src="assets/img/travel/destination-6.jpg" alt="Monas" class="img-fluid" loading="lazy">
@@ -169,7 +171,7 @@
             </div>
 
             <!-- Jawa Barat -->
-            <div class="col-lg-3 col-md-6 destination-item isotope-item filter-jabar">
+            <div class="col-lg-3 col-md-6 destination-item isotope-item filter-jabar" tabindex="0" data-dest="pangandaran" data-province="jabar" data-price="1500000">
               <div class="destination-small">
                 <div class="destination-overlay">
                   <img src="assets/img/travel/destination-8.webp" alt="Pantai Pangandaran" class="img-fluid" loading="lazy">
@@ -189,7 +191,7 @@
               </div>
             </div>
 
-            <div class="col-lg-3 col-md-6 destination-item isotope-item filter-jabar">
+            <div class="col-lg-3 col-md-6 destination-item isotope-item filter-jabar" tabindex="0" data-dest="bandung" data-province="jabar" data-price="1800000">
               <div class="destination-small">
                 <div class="destination-overlay">
                   <img src="assets/img/travel/destination-9.jpg" alt="Bandung" class="img-fluid" loading="lazy">
@@ -210,7 +212,7 @@
             </div>
 
             <!-- Jawa Tengah -->
-            <div class="col-lg-4 col-md-6 destination-item isotope-item filter-jateng">
+            <div class="col-lg-4 col-md-6 destination-item isotope-item filter-jateng" tabindex="0" data-dest="borobudur" data-province="jateng" data-price="2000000">
               <div class="destination-medium">
                 <div class="destination-overlay">
                   <img src="assets/img/travel/destination-10.jpg" alt="Borobudur" class="img-fluid" loading="lazy">
@@ -235,7 +237,7 @@
             </div>
 
             <!-- DI Yogyakarta -->
-            <div class="col-lg-4 col-md-6 destination-item isotope-item filter-yogya">
+            <div class="col-lg-4 col-md-6 destination-item isotope-item filter-yogya" tabindex="0" data-dest="prambanan" data-province="yogya" data-price="1800000">
               <div class="destination-medium">
                 <div class="destination-overlay">
                   <img src="assets/img/travel/destination-12.jpg" alt="Prambanan" class="img-fluid" loading="lazy">
@@ -260,7 +262,7 @@
             </div>
 
             <!-- Jawa Timur -->
-            <div class="col-lg-4 col-md-6 destination-item isotope-item filter-jatim">
+            <div class="col-lg-4 col-md-6 destination-item isotope-item filter-jatim" tabindex="0" data-dest="bromo" data-province="jatim" data-price="2200000">
               <div class="destination-medium">
                 <div class="destination-overlay">
                   <img src="assets/img/travel/destination-14.jpeg" alt="Gunung Bromo" class="img-fluid" loading="lazy">
@@ -324,8 +326,8 @@
               <form action="forms/newsletter.php" method="post" class="php-email-form">
                 <div class="input-group">
                   <input type="email" name="email" class="form-control" placeholder="Masukkan email Anda" required="">
-                  <button type="submit" class="btn-subscribe">
-                    <i class="bi bi-send"></i>
+                  <button type="submit" class="btn-subscribe btn btn-primary" aria-label="Kirim email">
+                    <i class="bi bi-send" aria-hidden="true"></i>
                   </button>
                 </div>
                 <div class="loading">Loading</div>
@@ -389,10 +391,10 @@
             </div>
 
             <div class="social-links">
-              <a href="https://www.facebook.com/UNSOfficial/"><i class="bi bi-facebook"></i></a>
-              <a href="https://www.instagram.com/uns.official/"><i class="bi bi-instagram"></i></a>
-              <a href="https://x.com/11MaretUniv"><i class="bi bi-twitter-x"></i></a>
-              <a href="https://www.youtube.com/@universitassebelasmaret2268"><i class="bi bi-youtube"></i></a>
+              <a href="https://www.facebook.com/UNSOfficial/" aria-label="Facebook"><i class="bi bi-facebook" aria-hidden="true"></i></a>
+              <a href="https://www.instagram.com/uns.official/" aria-label="Instagram"><i class="bi bi-instagram" aria-hidden="true"></i></a>
+              <a href="https://x.com/11MaretUniv" aria-label="X (Twitter)"><i class="bi bi-twitter-x" aria-hidden="true"></i></a>
+              <a href="https://www.youtube.com/@universitassebelasmaret2268" aria-label="YouTube"><i class="bi bi-youtube" aria-hidden="true"></i></a>
             </div>
           </div>
         </div>
@@ -421,7 +423,7 @@
   </footer>
 
   <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center" aria-label="Kembali ke atas"><i class="bi bi-arrow-up-short" aria-hidden="true"></i></a>
 
   <!-- Preloader -->
   <div id="preloader"></div>
@@ -437,6 +439,28 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script>
+    // Destinasi: click to confirm booking for a single destination.
+    (function(){
+      document.querySelectorAll('.destination-item').forEach(function(item){
+        item.style.cursor = 'pointer';
+        item.addEventListener('click', function(e){
+          // avoid clicking links inside
+          if (e.target.closest('a')) return;
+          const dest = item.getAttribute('data-dest');
+          const province = item.getAttribute('data-province');
+          const price = item.getAttribute('data-price') || '';
+          const name = item.querySelector('h3, h4') ? item.querySelector('h3, h4').textContent.trim() : dest;
+          const imgSrc = item.querySelector('img') ? item.querySelector('img').src : '';
+          if (!dest) return;
+          if (confirm(`Apakah Anda ingin memesan destinasi "${name}"?`)) {
+            const params = new URLSearchParams({ destination: province || '', destName: dest || name, total: price || 0, adults: '1', children: '0', destImg: imgSrc });
+            window.location.href = 'booking.html?' + params.toString();
+          }
+        });
+      });
+    })();
+  </script>
 
 </body>
 
