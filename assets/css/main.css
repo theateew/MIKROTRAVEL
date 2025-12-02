@@ -1,17 +1,14 @@
-/**
-* Template Name: TravelTime
-* Template URL: https://bootstrapmade.com/traveltime-bootstrap-travel-template/
-* Updated: Jul 28 2025 with Bootstrap v5.3.7
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
+/*
+ Project: MIKROTRAVEL — Final Project UAS Desain Web
+ Author: (-) — MIKROTRAVEL
+ Date: 2025-12-03
 */
 
 @charset "UTF-8";
-@import url("compat-buttons.css");
 
 /*--------------------------------------------------------------
 # Font & Color Variables
-# Help: https://bootstrapmade.com/color-system/
+# Color system guidance: project-specific variables and presets
 --------------------------------------------------------------*/
 /* Fonts */
 :root {

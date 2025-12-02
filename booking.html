@@ -7,6 +7,10 @@
   <title>Booking - MIKROTRAVEL</title>
   <meta name="description" content="Form booking mikrotravel">
 
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -213,7 +217,9 @@
                   </div>
                   <div class="col-md-8">
                     <h5 id="pkg-title"></h5>
-                    <p><strong>Durasi:</strong> <span id="pkg-days"></span></p>
+                    <p id="pkg-days" class="text-muted mb-1" style="display:none;"></p>
+                    <p id="pkg-duration-calc" class="text-muted mb-1" style="display:none;"></p>
+                    <div id="pkg-duration-warning" class="small text-danger mb-2" style="display:none;"></div>
                     <p><strong>Harga per orang:</strong> <strong id="pkg-price" style="color: var(--accent-color);"></strong></p>
                     <p><strong>Jumlah Peserta:</strong> <span id="pkg-people"></span></p>
                     <hr>
@@ -333,26 +339,40 @@
   </main>
 
   <footer id="footer" class="footer position-relative dark-background">
+
     <div class="container">
-      <div class="row gy-4">
+      <div class="row gy-5">
+
         <div class="col-lg-4">
-          <div class="footer-info">
-            <a href="index.html" class="logo d-flex align-items-center">
-              <img src="assets/img/icon.png" alt="" style="height:40px;">
-              <span>MIKROTRAVEL</span>
+          <div class="footer-content">
+            <a href="index.html" class="logo d-flex align-items-center mb-4">
+              <span class="sitename">MIKROTRAVEL</span>
             </a>
-            <p>Paket wisata terbaik untuk menjelajahi keindahan Pulau Jawa dengan harga yang terjangkau.</p>
+            <p class="mb-4">Platform pariwisata yang fokus pada keindahan Pulau Jawa, menyediakan informasi dan paket wisata terbaik untuk pengalaman tak terlupakan.</p>
+
+            <div class="newsletter-form">
+              <h5>Tetap Update</h5>
+              <form action="forms/newsletter.php" method="post" class="php-email-form">
+                <div class="input-group">
+                  <input type="email" name="email" class="form-control" placeholder="Masukkan email Anda" required="">
+                  <button type="submit" class="btn-subscribe btn btn-primary" aria-label="Kirim email">
+                    <i class="bi bi-send" aria-hidden="true"></i>
+                  </button>
+                </div>
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Terima kasih telah berlangganan!</div>
+              </form>
+            </div>
           </div>
         </div>
 
         <div class="col-lg-2 col-6">
           <div class="footer-links">
-            <h4>Menu</h4>
+            <h4>Perusahaan</h4>
             <ul>
-              <li><a href="index.html"><i class="bi bi-chevron-right"></i> Home</a></li>
-              <li><a href="destinasi.html"><i class="bi bi-chevron-right"></i> Destinasi</a></li>
-              <li><a href="paket.html"><i class="bi bi-chevron-right"></i> Paket Wisata</a></li>
               <li><a href="tentang.html"><i class="bi bi-chevron-right"></i> Tentang</a></li>
+              <li><a href="blog.html"><i class="bi bi-chevron-right"></i> Blog</a></li>
               <li><a href="kontak.html"><i class="bi bi-chevron-right"></i> Kontak</a></li>
             </ul>
           </div>
@@ -364,6 +384,7 @@
             <ul>
               <li><a href="paket.html"><i class="bi bi-chevron-right"></i> Paket Wisata</a></li>
               <li><a href="destinasi.html"><i class="bi bi-chevron-right"></i> Destinasi</a></li>
+
             </ul>
           </div>
         </div>
@@ -612,8 +633,8 @@
       const pkgPrice = Number(params.get('pkg_price') || 0);
       const pkgDays = params.get('pkg_days') || '';
       const destination = params.get('destination');
-      const checkin = params.get('checkin');
-      const checkout = params.get('checkout');
+      let bookingCheckin = params.get('checkin');
+      let bookingCheckout = params.get('checkout');
       const adults = parseInt(params.get('adults')||'1',10);
       const children = parseInt(params.get('children')||'0',10);
       const packageTotalParam = Number(params.get('total')||0);
@@ -637,8 +658,77 @@
       let selected = null;
 
       function renderSelected() {
-        if (!selected) { selectedEl.innerHTML = '<em>Belum ada pilihan paket/destinasi.</em>'; return; }
-        selectedEl.innerHTML = `<div><strong>${selected.title}</strong> (${selected.type})</div><div>${adults} Dewasa, ${children} Anak</div><div>Tanggal: ${checkin||'-'} → ${checkout||'-'}</div>`;
+        const packageDisplay = document.getElementById('package-display');
+        const packagePlaceholder = document.getElementById('package-placeholder');
+        const pkgImage = document.getElementById('pkg-image');
+        const pkgTitleEl = document.getElementById('pkg-title');
+        const pkgDaysEl = document.getElementById('pkg-days');
+        const pkgPriceEl = document.getElementById('pkg-price');
+        const pkgPeopleEl = document.getElementById('pkg-people');
+        const pkgCheckinEl = document.getElementById('pkg-checkin');
+        const pkgCheckoutEl = document.getElementById('pkg-checkout');
+
+        if (!selected) {
+          selectedEl.innerHTML = '<em>Belum ada pilihan paket/destinasi.</em>';
+          if (packageDisplay) packageDisplay.style.display = 'none';
+          if (packagePlaceholder) packagePlaceholder.style.display = '';
+          return;
+        }
+
+        // show package block
+        if (packageDisplay) packageDisplay.style.display = '';
+        if (packagePlaceholder) packagePlaceholder.style.display = 'none';
+
+        // populate package summary fields (if present)
+        if (pkgTitleEl) pkgTitleEl.textContent = selected.title || '';
+          // show package duration only when this is a package-type selection
+          if (pkgDaysEl) {
+            if (selected.type === 'package' && (selected.days || pkgDays)) {
+              const dur = selected.days || pkgDays || '';
+              pkgDaysEl.textContent = dur;
+              pkgDaysEl.style.display = '';
+            } else {
+              pkgDaysEl.textContent = '';
+              pkgDaysEl.style.display = 'none';
+            }
+        }
+        if (pkgPriceEl) pkgPriceEl.textContent = selected.price ? currencyFmt(selected.price) : '';
+        if (pkgPeopleEl) pkgPeopleEl.textContent = `${adults} Dewasa, ${children} Anak`;
+        if (pkgImage && selected.img) pkgImage.src = selected.img;
+
+        // ensure date inputs reflect current booking dates
+        if (pkgCheckinEl) pkgCheckinEl.value = bookingCheckin || '';
+        if (pkgCheckoutEl) pkgCheckoutEl.value = bookingCheckout || '';
+
+        // show calculated duration (based on date inputs) and warn if differs from package days
+        const pkgDurationCalcEl = document.getElementById('pkg-duration-calc');
+        const pkgDurationWarningEl = document.getElementById('pkg-duration-warning');
+        function parsePackageDays(str){ if (!str) return null; const m = (''+str).match(/(\d+)/); return m ? parseInt(m[1],10) : null; }
+        if (pkgCheckinEl && pkgCheckoutEl && pkgCheckinEl.value && pkgCheckoutEl.value) {
+          const d1 = new Date(pkgCheckinEl.value);
+          const d2 = new Date(pkgCheckoutEl.value);
+          if (!isNaN(d1) && !isNaN(d2) && d2 >= d1) {
+            const diffMs = d2 - d1;
+            const diffDays = Math.round(diffMs / (1000*60*60*24)) + 1; // inclusive days (depart + return)
+            if (pkgDurationCalcEl) { pkgDurationCalcEl.textContent = `Durasi terhitung: ${diffDays} Hari`; pkgDurationCalcEl.style.display = ''; }
+            const pkgDaysNum = parsePackageDays(selected.days || pkgDays || '');
+            if (pkgDurationWarningEl) {
+              if (pkgDaysNum !== null && pkgDaysNum !== diffDays) {
+                pkgDurationWarningEl.textContent = `Perhatian: durasi paket (${pkgDaysNum} hari) berbeda dari tanggal yang dipilih (${diffDays} hari).`;
+                pkgDurationWarningEl.style.display = '';
+              } else { pkgDurationWarningEl.textContent = ''; pkgDurationWarningEl.style.display = 'none'; }
+            }
+          } else {
+            if (pkgDurationCalcEl) { pkgDurationCalcEl.textContent = ''; pkgDurationCalcEl.style.display = 'none'; }
+            if (pkgDurationWarningEl) { pkgDurationWarningEl.textContent = ''; pkgDurationWarningEl.style.display = 'none'; }
+          }
+        } else {
+          if (pkgDurationCalcEl) { pkgDurationCalcEl.textContent = ''; pkgDurationCalcEl.style.display = 'none'; }
+          if (pkgDurationWarningEl) { pkgDurationWarningEl.textContent = ''; pkgDurationWarningEl.style.display = 'none'; }
+        }
+
+        // update small selected-items summary
+        selectedEl.innerHTML = `<div><strong>${selected.title}</strong> (${selected.type})</div><div>${adults} Dewasa, ${children} Anak</div><div>Tanggal: ${bookingCheckin||'-'} → ${bookingCheckout||'-'}</div>`;
       }
 
       async function loadPackageData() {
@@ -650,15 +740,28 @@
           if (pkg) {
             const found = packagesData.find(p=>p.id === pkg || p.id === pkg.replace(/\s+/g,'-'));
             if (found) {
-              selected = { type: 'package', id: found.id, title: found.title, price: found.price };
+                selected = { type: 'package', id: found.id, title: found.title, price: found.price, days: found.days || '', img: found.img || '' };
             } else {
               // fallback to passed price if found not in JSON
-              selected = { type: 'package', id: pkg, title: pkgTitle, price: pkgPrice };
+                selected = { type: 'package', id: pkg, title: pkgTitle, price: pkgPrice, days: pkgDays || '', img: pkgImg || '' };
             }
           }
           if (!selected && destination) {
             const destName = params.get('destName') || destination;
             selected = { type:'destination', id:destination, title: destName, price: packageTotalParam||0 };
+          }
+          // populate date inputs (if present) and wire listeners
+          const pkgCheckinEl = document.getElementById('pkg-checkin');
+          const pkgCheckoutEl = document.getElementById('pkg-checkout');
+          if (pkgCheckinEl) pkgCheckinEl.value = bookingCheckin || '';
+          if (pkgCheckoutEl) pkgCheckoutEl.value = bookingCheckout || '';
+          if (pkgCheckinEl && !pkgCheckinEl._pkg_listened) {
+            pkgCheckinEl.addEventListener('change', function(e){ bookingCheckin = e.target.value; renderSelected(); scheduleSave(); });
+            pkgCheckinEl._pkg_listened = true;
+          }
+          if (pkgCheckoutEl && !pkgCheckoutEl._pkg_listened) {
+            pkgCheckoutEl.addEventListener('change', function(e){ bookingCheckout = e.target.value; renderSelected(); scheduleSave(); });
+            pkgCheckoutEl._pkg_listened = true;
           }
           renderSelected();
           calcTotals();
@@ -668,6 +771,11 @@
           // fallback to provided params
           if (!selected && pkg) {
             selected = { type:'package', id:pkg, title: pkgTitle || pkg, price: pkgPrice || packageTotalParam||0 };
+            // ensure date inputs reflect params
+            const pkgCheckinEl_fb = document.getElementById('pkg-checkin');
+            const pkgCheckoutEl_fb = document.getElementById('pkg-checkout');
+            if (pkgCheckinEl_fb) pkgCheckinEl_fb.value = bookingCheckin || '';
+            if (pkgCheckoutEl_fb) pkgCheckoutEl_fb.value = bookingCheckout || '';
             renderSelected();
             calcTotals();
           }
@@ -733,6 +841,14 @@
           document.getElementById('cust-note').value = cached.form.note || '';
         }
         if (cached.transport) transportSelect.value = cached.transport.mode || transportSelect.value;
+        if (cached.booking) {
+          bookingCheckin = cached.booking.checkin || bookingCheckin || '';
+          bookingCheckout = cached.booking.checkout || bookingCheckout || '';
+          const pkgCheckinElLoad = document.getElementById('pkg-checkin');
+          const pkgCheckoutElLoad = document.getElementById('pkg-checkout');
+          if (pkgCheckinElLoad) pkgCheckinElLoad.value = bookingCheckin || '';
+          if (pkgCheckoutElLoad) pkgCheckoutElLoad.value = bookingCheckout || '';
+        }
       }
 
       // Load package data and initialize rendering/totals
@@ -748,7 +864,7 @@
       function scheduleSave(){
         if (saveTimer) clearTimeout(saveTimer);
         saveTimer = setTimeout(()=>{
-          const data = { form: { name: document.getElementById('cust-name').value, email: document.getElementById('cust-email').value, phone: document.getElementById('cust-phone').value, address: document.getElementById('cust-address').value, note: document.getElementById('cust-note').value }, transport: { mode: transportSelect.value }, selected };
+          const data = { form: { name: document.getElementById('cust-name').value, email: document.getElementById('cust-email').value, phone: document.getElementById('cust-phone').value, address: document.getElementById('cust-address').value, note: document.getElementById('cust-note').value }, transport: { mode: transportSelect.value }, booking: { checkin: bookingCheckin || '', checkout: bookingCheckout || '' }, selected };
           saveCache(data);
         }, 1000);
       }
